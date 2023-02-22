@@ -1,22 +1,30 @@
 package DP;
 
 /**
- * 给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 '?' 和 '*' 的通配符匹配。
+ * 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
  *
- * '?' 可以匹配任何单个字符。
- * '*' 可以匹配任意字符串（包括空字符串）。
- *
- * 两个字符串完全匹配才算匹配成功。
- *
- * 说明:
- *
- *     s 可能为空，且只包含从 a-z 的小写字母。
- *     p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。
+ * 子数组 是数组中的一个连续部分。
  */
 public class Solution1 {
 
-    public boolean isMatch(String s, String p) {
+    public int maxSubArray(int[] nums) {
 
+        int[] s=new int[nums.length];
+        s[0]=nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (s[i-1]<0){
+                s[i]=nums[i];
+            }else {
+                s[i]=nums[i]+s[i-1];
+            }
+        }
+
+        int p=s[0];
+        for (int i = 1; i < s.length; i++) {
+            p=Math.max(p,s[i]);
+        }
+
+        return p;
     }
 
 }
