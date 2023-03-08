@@ -1,4 +1,4 @@
-package SlidingWindow;
+package Recurrence;
 
 import java.util.HashMap;
 import java.util.Map;
