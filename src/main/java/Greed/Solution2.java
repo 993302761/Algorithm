@@ -6,14 +6,12 @@ package Greed;
 public class Solution2 {
 
     public String largestNumber(int[] nums) {
-        String s="";
+        StringBuilder s=new StringBuilder("");
         int p=0;
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length; j++) {
 
-            }
         }
-        return s;
+        return s.toString();
     }
 
 }
