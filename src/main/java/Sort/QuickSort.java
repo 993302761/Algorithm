@@ -1,46 +1,84 @@
 package Sort;
 
+//双向链表的快速排序（未完成）
 public class QuickSort {
 
-    //快速排序
-    public static void sort(int[] s,int start,int end){
-        if (start<end){
-            int num=s[start];
-            int left=start;
-            int right=end;
-            while (left<right){
+    public static class Node{
+        public int data;
+        public Node next;
+        public Node pre;
 
-                while (left<right&&s[left]<num){
-                    left++;
-                }
+        public Node(int data) {
+            this.data = data;
+            this.next=null;
+            this.pre=null;
+        }
+    }
 
-                while (left<right&&s[right]>num){
-                    right--;
-                }
 
-                if (left<right){
-                    int t=s[right];
-                    s[right]=s[left];
-                    s[left]=t;
-                    left++;
+    public static class LinkedList{
+        public Node root;
+
+        public void addNode(int data){
+            if (root==null){
+                root=new Node(data);
+            }else {
+                Node node = this.root;
+                while (node.next!=null){
+                    node=node.next;
                 }
+                Node node1 = new Node(data);
+                node.next=node1;
+                node1.pre=node;
+            }
+        }
+
+
+
+        private void  quickSort(Node head,Node tail){
+            Node p1,p2;
+            p1=head;
+            p2=tail;
+
+
+        }
+
+        public void sort(){
+            if (root==null||root.next==null){
+                return;
+            }
+            Node sentry=new Node(0);
+            sentry.next=root;
+            root.pre=sentry;
+            Node head = this.root;
+            Node tail=this.root;
+
+            while (tail.next!=null){
+                tail=tail.next;
             }
 
-            sort(s,start,right-1);
+            quickSort(head,tail);
+            root=sentry.next;
+            root.pre=null;
+        }
 
-            sort(s,right+1,end);
-
+        public void show(){
+            Node node = this.root;
+            while (node!=null){
+                System.out.println(node.data);
+                node=node.next;
+            }
         }
 
     }
 
-    public static void main(String[] args) {
-        int[] s=new int[]{5,1,4,3,6,2,8,9,7,10};
-//        int[] s=new int[]{2,1,4,3};
-        sort(s,0,s.length-1);
 
-        for (int i = 0; i < s.length; i++) {
-            System.out.println(s[i]);
-        }
+    public static void main(String[] args) {
+        LinkedList list=new LinkedList();
+        list.addNode(1);
+        list.addNode(8);
+        list.addNode(5);
+        list.sort();
+        list.show();
     }
 }
