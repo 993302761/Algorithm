@@ -1,6 +1,6 @@
 package Sort;
 
-//双向链表的快速排序（未完成）
+//双向链表的快速排序
 public class QuickSort {
 
     public static class Node{
@@ -36,10 +36,40 @@ public class QuickSort {
 
 
         private void  quickSort(Node head,Node tail){
+            if (head==null||tail==null||head==tail){
+                return;
+            }
+
             Node p1,p2;
             p1=head;
             p2=tail;
+            boolean state=true;
+            while (p1!=p2){
+                if (state){
+                    if (p1.data> p2.data){
+                        int t= p1.data;
+                        p1.data= p2.data;;
+                        p2.data=t;
+                        p1=p1.next;
+                        state=false;
+                    }else {
+                        p2=p2.pre;
+                    }
+                }else {
+                    if (p1.data> p2.data){
+                        int t= p1.data;
+                        p1.data= p2.data;;
+                        p2.data=t;
+                        p2=p2.pre;
+                        state=true;
+                    }else {
+                        p1=p1.next;
+                    }
+                }
+            }
 
+            quickSort(head,p1);
+            quickSort(p1.next,tail);
 
         }
 
@@ -76,6 +106,10 @@ public class QuickSort {
     public static void main(String[] args) {
         LinkedList list=new LinkedList();
         list.addNode(1);
+        list.addNode(9);
+        list.addNode(6);
+        list.addNode(5);
+        list.addNode(7);
         list.addNode(8);
         list.addNode(5);
         list.sort();
