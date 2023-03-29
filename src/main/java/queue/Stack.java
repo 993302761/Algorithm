@@ -1,7 +1,7 @@
 package queue;
 
 import java.util.ArrayDeque;
-
+//两个栈实现队列
 public class Stack {
 
     public static void main(String[] args) {
