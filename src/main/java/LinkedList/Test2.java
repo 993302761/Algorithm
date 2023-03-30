@@ -6,13 +6,6 @@ import java.util.Deque;
 //删除链表的倒数第 N 个结点
 public class Test2 {
 
-      public static class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
 
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         Deque<ListNode> stack = new ArrayDeque<>();
