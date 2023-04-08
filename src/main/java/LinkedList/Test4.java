@@ -2,10 +2,12 @@ package LinkedList;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 
 public class Test4 {
 
     public static ListNode deleteDuplicates(ListNode head) {
+
         if (head==null||head.next==null){
             return head;
         }
