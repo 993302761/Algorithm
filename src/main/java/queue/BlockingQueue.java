@@ -8,6 +8,10 @@ import java.util.List;
  */
 public class BlockingQueue {
 
+    public BlockingQueue(int i) {
+
+    }
+
     public static class MyQueue {
 
         private int len;
